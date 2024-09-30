@@ -1,39 +1,53 @@
 <html>
-  <head>
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
-  </head>
-  <body>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
     <a-scene mindar-image="imageTargetSrc: ./targets.mind;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-      <!-- AR Target -->
-      <a-entity mindar-image-target="targetIndex: 0">
-        <a-plane src="./main.jpg" position="0 0 0" height="0.276" width="0.5" scale="0 0 0" animation="property: scale; to: 1 1 1; easing: easeOutElastic; dur: 1000"></a-plane>
+        <!-- AR Target -->
+        <a-entity mindar-image-target="targetIndex: 0">
+            <!-- Main Plane -->
+            <a-plane id="main-plane" src="./main.jpg" position="0 0 0" height="0.276" width="0.5" scale="0 0 0"
+                animation="property: scale; to: 1 1 1; easing: easeOutElastic; dur: 1000; startEvents: show"></a-plane>
 
-        <a-gltf-model src="./low-poly_tesla_cybertruck.glb" scale="0.1 0.1 0.1" position="0.15 0.15 0.02" rotation="0 -90 0" animation="property: position; to: 0.15 0.1 0.02; dur: 1000; easing: easeOutElastic"></a-gltf-model>
+            <!-- 3D Model -->
+            <a-gltf-model src="./low-poly_tesla_cybertruck.glb" scale="0.1 0.1 0.1" position="0.15 0.15 0.02" rotation="0 -90 0"
+                animation="property: position; to: 0.15 0.1 0.02; dur: 1000; easing: easeOutElastic; startEvents: show"></a-gltf-model>
 
-        <a-entity position="0 -0.3 0">
-          <a-plane id="linkedin-icon" src="./linkedin.png" height="0.1" width="0.1" position="-0.16 0 0"></a-plane>
-          <a-plane id="facebook-icon" src="./facebook.png" height="0.1" width="0.1" position="0 0 0"></a-plane>
-          <a-plane id="insta-icon" src="./instagram.png" height="0.1" width="0.1" position="0.16 0 0"></a-plane>
+            <!-- Social Media Icons -->
+            <a-entity position="0 -0.3 0">
+                <a-plane id="linkedin-icon" src="./linkedin.png" height="0.1" width="0.1" position="-0.16 0 0"></a-plane>
+                <a-plane id="facebook-icon" src="./facebook.png" height="0.1" width="0.1" position="0 0 0"></a-plane>
+                <a-plane id="insta-icon" src="./instagram.png" height="0.1" width="0.1" position="0.16 0 0"></a-plane>
+            </a-entity>
+
+            <!-- Bottom Plane -->
+            <a-plane src="./downcard2.jpg" position="0 -0.5 0" height="0.276" width="0.5" scale="0 0 0"
+                animation="property: scale; to: 1 1 1; easing: easeOutElastic; dur: 1000; startEvents: show"></a-plane>
         </a-entity>
-
-        <a-plane src="./downcard2.jpg" position="0 -0.5 0" height="0.276" width="0.5" scale="0 0 0" animation="property: scale; to: 1 1 1; easing: easeOutElastic; dur: 1000"></a-plane>
-      </a-entity>
     </a-scene>
 
     <script>
-      document.querySelector('#linkedin-icon').addEventListener('click', function () {
-        window.open('https://www.linkedin.com', '_blank');
-      });
-      document.querySelector('#facebook-icon').addEventListener('click', function () {
-        window.open('https://www.facebook.com', '_blank');
-      });
-      document.querySelector('#insta-icon').addEventListener('click', function () {
-        window.open('https://www.instagram.com', '_blank');
-      });
+        // Event listeners for social media icons
+        document.querySelector('#linkedin-icon').addEventListener('click', function () {
+            window.open('https://www.linkedin.com', '_blank');
+        });
+        document.querySelector('#facebook-icon').addEventListener('click', function () {
+            window.open('https://www.facebook.com', '_blank');
+        });
+        document.querySelector('#insta-icon').addEventListener('click', function () {
+            window.open('https://www.instagram.com', '_blank');
+        });
     </script>
-  </body>
+</body>
 </html>
